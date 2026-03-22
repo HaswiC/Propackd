@@ -480,7 +480,7 @@ function tryExtensions(imgEl, base, exts, fallbackFn) {
   }
   tryNext();
 }
-
+//=====Feedback to Update====
 var TEXT_REVIEWS = [
   { initials:'RK', name:'Rahul K.',  plan:'Monthly Signature 80', text:'Finally stopped overthinking post-workout meals. ProPackD just shows up at my gym and I eat. Simple as that.', time:'Yesterday, 8:14 AM', stars:5 },
   { initials:'PT', name:'Priya T.',  plan:'Monthly Smart 80', text:'The Smart 80 veg plan is incredible. 80g protein from paneer and soya. Did not think that was possible in a single meal!', time:'2 days ago, 7:52 PM', stars:5 },
@@ -488,6 +488,7 @@ var TEXT_REVIEWS = [
   { initials:'DS', name:'Divya S.',  plan:'Smart 40 Veg', text:'As a vegetarian I was skeptical about hitting 40g protein. But their channa and paneer combo is amazing!', time:'1 week ago, 7:45 PM', stars:5 },
   { initials:'KR', name:'Karthik R.',plan:'Signature 80 Weekly', text:'The hariyali chicken is next level. My whole gym has started ordering now!', time:'1 week ago, 8:30 AM', stars:5 },
   { initials:'MV', name:'Meena V.',  plan:'Essential 40 Monthly', text:'Delivery is always on time. Zero effort on my part and my macros are sorted for the day. 10/10', time:'5 days ago, 7:18 PM', stars:5 },
+  { initials:'JA', name:'Aswini J.',  plan:'Essential 40', text:'Everyday new meals keep motivated to weight loss., time:'20 days ago, 9:18 PM', stars:4 },
 ];
 
 // ===== MEAL CAROUSEL =====
@@ -683,7 +684,8 @@ var plans = {
     {name:'Signature 80',g:'80',type:'Non-Veg',price:'&#8377;6,000',meals:'20 meals',items:['120g cooked chicken','1 boiled egg','Plant protein (channa/rajma/soya/paneer/tofu)','~80g protein per meal'],featured:true},
     {name:'Essential 40',g:'40',type:'Non-Veg',price:'&#8377;5,000',meals:'20 meals',items:['120g cooked chicken','1 boiled egg','High-fibre side','~40g protein per meal'],featured:false},
     {name:'Smart 40',g:'40',type:'Veg',price:'&#8377;4,000',meals:'20 meals',items:['120g plant protein (channa/rajma/soya/paneer/tofu)','High-fibre side','100% vegetarian','~40g protein per meal'],featured:false},
-    {name:'Smart 80',g:'80',type:'Veg',price:'&#8377;5,500',meals:'20 meals',items:['70g soya + 120g paneer/tofu','100g channa/rajma','100% vegetarian','~80g protein per meal'],featured:false}
+    {name:'Smart 80',g:'80',type:'Veg',price:'&#8377;5,500',meals:'20 meals',items:['70g soya + 120g paneer/tofu','100g channa/rajma','100% vegetarian','~80g protein per meal'],featured:false},
+    {name:'Budget 80',g:'80',type:'Non-Veg',price:'&#8377;3,800',meals:'20 meals',items:['100g Chicken/Tofu/Paneer','2 boiled egg', '80gm Soya','100gm channa/rajma','~80g protein per meal'],featured:false}
   ]
 };
 var selectedPlan = 'Signature 80';
