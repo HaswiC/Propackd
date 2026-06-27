@@ -1,769 +1,1717 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>ProPackD – Protein Meals for Gym Goers</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-<style>
-*{margin:0;padding:0;box-sizing:border-box;}
-:root{
-  --black:#0d0d0d;--white:#f5f2eb;--green:#2d5a27;--green-light:#3e7a36;
-  --accent:#c8f53a;--gray:#1a1a1a;--gray2:#2a2a2a;--muted:#888;--card-bg:#141414;
-}
-html{scroll-behavior:smooth;}
-body{background:var(--black);color:var(--white);font-family:'DM Sans',sans-serif;font-weight:400;line-height:1.6;overflow-x:hidden;}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ProPackD – Protein Meals for Gym Goers</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    :root {
+      --black: #0d0d0d;
+      --white: #f5f2eb;
+      --green: #2d5a27;
+      --green-light: #3e7a36;
+      --accent: #c8f53a;
+      --gray: #1a1a1a;
+      --gray2: #2a2a2a;
+      --muted: #888;
+      --card-bg: #141414;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
 
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;background:rgba(13,13,13,0.92);backdrop-filter:blur(8px);border-bottom:1px solid #222;}
-.logo-img{height:44px;width:auto;object-fit:contain;}
-nav ul{list-style:none;display:flex;gap:2rem;}
-nav ul a{color:var(--muted);text-decoration:none;font-size:0.85rem;letter-spacing:1px;text-transform:uppercase;transition:color 0.2s;}
-nav ul a:hover{color:var(--accent);}
-.nav-cta{background:#25D366;color:#fff;padding:0.5rem 1.25rem;border-radius:4px;font-weight:600;font-size:0.85rem;text-decoration:none;letter-spacing:1px;text-transform:uppercase;transition:opacity 0.2s;display:flex;align-items:center;gap:6px;}
-.nav-cta:hover{opacity:0.85;}
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      background: rgba(13, 13, 13, 0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid #222;
+    }
+    .logo-img {
+      height: 44px;
+      width: auto;
+      object-fit: contain;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+    nav ul a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    nav ul a:hover {
+      color: var(--accent);
+    }
+    .nav-cta {
+      background: #25D366;
+      color: #fff;
+      padding: 0.5rem 1.25rem;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-decoration: none;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: opacity 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .nav-cta:hover {
+      opacity: 0.85;
+    }
 
-/* HERO */
-.hero{min-height:100vh;display:flex;align-items:center;padding:8rem 2rem 4rem;position:relative;overflow:hidden;}
-.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 80% at 70% 50%, #1e3d1a 0%, transparent 70%);pointer-events:none;}
-.hero-grid{max-width:1200px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
-.hero-tag{display:inline-block;background:var(--accent);color:var(--black);font-size:0.75rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;border-radius:2px;margin-bottom:1.5rem;}
-.hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(3.5rem,7vw,6rem);line-height:0.95;letter-spacing:2px;margin-bottom:1.5rem;}
-.hero h1 .highlight{color:var(--accent);}
-.hero > .hero-grid > div > p{font-size:1.05rem;color:#aaa;max-width:480px;margin-bottom:2rem;line-height:1.7;}
-.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
-.btn-wa{background:#25D366;color:#fff;padding:0.85rem 2rem;border-radius:4px;font-weight:700;font-size:0.9rem;text-decoration:none;letter-spacing:1px;text-transform:uppercase;transition:transform 0.2s,opacity 0.2s;display:inline-flex;align-items:center;gap:8px;}
-.btn-wa:hover{transform:translateY(-2px);opacity:0.9;}
-.btn-outline{border:1px solid #444;color:var(--white);padding:0.85rem 2rem;border-radius:4px;font-weight:500;font-size:0.9rem;text-decoration:none;letter-spacing:1px;text-transform:uppercase;transition:border-color 0.2s,color 0.2s;display:inline-block;}
-.btn-outline:hover{border-color:var(--accent);color:var(--accent);}
-.hero-stats{display:flex;gap:2.5rem;margin-top:3rem;padding-top:2rem;border-top:1px solid #222;}
-.stat-num{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;color:var(--accent);letter-spacing:1px;}
-.stat-label{font-size:0.8rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;}
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 8rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 80% at 70% 50%, #1e3d1a 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .hero-tag {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--black);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 2px;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3.5rem, 7vw, 6rem);
+      line-height: 0.95;
+      letter-spacing: 2px;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 .highlight {
+      color: var(--accent);
+    }
+    .hero>.hero-grid>div>p {
+      font-size: 1.05rem;
+      color: #aaa;
+      max-width: 480px;
+      margin-bottom: 2rem;
+      line-height: 1.7;
+    }
+    .hero-btns {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .btn-wa {
+      background: #25D366;
+      color: #fff;
+      padding: 0.85rem 2rem;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-decoration: none;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: transform 0.2s, opacity 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-wa:hover {
+      transform: translateY(-2px);
+      opacity: 0.9;
+    }
+    .btn-outline {
+      border: 1px solid #444;
+      color: var(--white);
+      padding: 0.85rem 2rem;
+      border-radius: 4px;
+      font-weight: 500;
+      font-size: 0.9rem;
+      text-decoration: none;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: border-color 0.2s, color 0.2s;
+      display: inline-block;
+    }
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .hero-stats {
+      display: flex;
+      gap: 2.5rem;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid #222;
+    }
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.2rem;
+      color: var(--accent);
+      letter-spacing: 1px;
+    }
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
 
-/* MACRO CARD */
-.hero-visual{position:relative;}
-.macro-card{background:var(--card-bg);border:1px solid #2a2a2a;border-radius:16px;padding:2rem;}
-.macro-card h3{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:2px;color:var(--muted);margin-bottom:1.5rem;}
-.macro-bars{display:flex;flex-direction:column;gap:1rem;}
-.macro-bar-row{display:flex;align-items:center;gap:1rem;}
-.macro-bar-label{font-size:0.85rem;color:#ccc;min-width:70px;}
-.macro-bar-track{flex:1;height:8px;background:#222;border-radius:4px;overflow:hidden;}
-.macro-bar-fill{height:100%;border-radius:4px;transition:width 0.5s ease;}
-.fill-protein{background:var(--accent);}
-.fill-carbs{background:#3a7bd5;}
-.fill-fat{background:#f07030;}
-.macro-bar-val{font-size:0.85rem;color:var(--muted);min-width:40px;text-align:right;}
-.macro-tags{margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid #222;display:flex;gap:0.6rem;flex-wrap:wrap;}
-.macro-tag{font-size:0.78rem;background:#1a2e18;color:#8ec98a;padding:4px 10px;border-radius:4px;letter-spacing:1px;}
-.badge-float{position:absolute;top:-1rem;right:-1rem;background:var(--green-light);border:1px solid #4a8a42;border-radius:12px;padding:1rem 1.25rem;text-align:center;}
-.badge-float .num{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;color:var(--accent);line-height:1;}
-.badge-float .txt{font-size:0.7rem;color:#aaa;letter-spacing:1px;text-transform:uppercase;}
-.delivery-pill{position:absolute;bottom:-1.2rem;left:50%;transform:translateX(-50%);background:var(--card-bg);border:1px solid #333;border-radius:50px;padding:0.6rem 1.5rem;display:flex;align-items:center;gap:0.6rem;white-space:nowrap;}
-.pill-dot{width:8px;height:8px;background:var(--accent);border-radius:50%;animation:pulse 2s infinite;}
-@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.3;}}
-.delivery-pill span{font-size:0.8rem;color:#ccc;}
+    /* MACRO CARD */
+    .hero-visual {
+      position: relative;
+    }
+    .macro-card {
+      background: var(--card-bg);
+      border: 1px solid #2a2a2a;
+      border-radius: 16px;
+      padding: 2rem;
+    }
+    .macro-card h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.2rem;
+      letter-spacing: 2px;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+    .macro-bars {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .macro-bar-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .macro-bar-label {
+      font-size: 0.85rem;
+      color: #ccc;
+      min-width: 70px;
+    }
+    .macro-bar-track {
+      flex: 1;
+      height: 8px;
+      background: #222;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .macro-bar-fill {
+      height: 100%;
+      border-radius: 4px;
+      transition: width 0.5s ease;
+    }
+    .fill-protein {
+      background: var(--accent);
+    }
+    .fill-carbs {
+      background: #3a7bd5;
+    }
+    .fill-fat {
+      background: #f07030;
+    }
+    .macro-bar-val {
+      font-size: 0.85rem;
+      color: var(--muted);
+      min-width: 40px;
+      text-align: right;
+    }
+    .macro-tags {
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #222;
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+    .macro-tag {
+      font-size: 0.78rem;
+      background: #1a2e18;
+      color: #8ec98a;
+      padding: 4px 10px;
+      border-radius: 4px;
+      letter-spacing: 1px;
+    }
+    .badge-float {
+      position: absolute;
+      top: -1rem;
+      right: -1rem;
+      background: var(--green-light);
+      border: 1px solid #4a8a42;
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+      text-align: center;
+    }
+    .badge-float .num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.5rem;
+      color: var(--accent);
+      line-height: 1;
+    }
+    .badge-float .txt {
+      font-size: 0.7rem;
+      color: #aaa;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .delivery-pill {
+      position: absolute;
+      bottom: -1.2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--card-bg);
+      border: 1px solid #333;
+      border-radius: 50px;
+      padding: 0.6rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      white-space: nowrap;
+    }
+    .pill-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%,
+      100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.3;
+      }
+    }
+    .delivery-pill span {
+      font-size: 0.8rem;
+      color: #ccc;
+    }
 
-/* SECTIONS */
-section{padding:6rem 2rem;}
-.section-inner{max-width:1200px;margin:0 auto;}
-.section-tag{font-size:0.75rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem;}
-.section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,5vw,4rem);letter-spacing:2px;line-height:1;margin-bottom:1rem;}
-.section-sub{color:#888;font-size:1rem;max-width:540px;line-height:1.7;}
+    /* SECTIONS */
+    section {
+      padding: 6rem 2rem;
+    }
+    .section-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .section-tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      letter-spacing: 2px;
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+    .section-sub {
+      color: #888;
+      font-size: 1rem;
+      max-width: 540px;
+      line-height: 1.7;
+    }
 
-/* HOW IT WORKS */
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:4rem;}
-.step{position:relative;padding:2rem;background:var(--card-bg);border:1px solid #222;border-radius:12px;}
-.step-num{font-family:'Bebas Neue',sans-serif;font-size:4rem;color:#1e1e1e;line-height:1;position:absolute;top:1rem;right:1.25rem;letter-spacing:2px;}
-.step-icon{width:48px;height:48px;background:var(--green);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:1.25rem;}
-.step h3{font-size:1.1rem;font-weight:600;margin-bottom:0.5rem;}
-.step p{font-size:0.9rem;color:#888;line-height:1.6;}
+    /* HOW IT WORKS */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 4rem;
+    }
+    .step {
+      position: relative;
+      padding: 2rem;
+      background: var(--card-bg);
+      border: 1px solid #222;
+      border-radius: 12px;
+    }
+    .step-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 4rem;
+      color: #1e1e1e;
+      line-height: 1;
+      position: absolute;
+      top: 1rem;
+      right: 1.25rem;
+      letter-spacing: 2px;
+    }
+    .step-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--green);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+    .step h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    .step p {
+      font-size: 0.9rem;
+      color: #888;
+      line-height: 1.6;
+    }
 
-/* PLANS */
-#plans{background:var(--gray);}
-.toggle{display:flex;margin:2.5rem 0 3rem;background:#111;border:1px solid #222;border-radius:6px;width:fit-content;overflow:hidden;}
-.toggle-btn{padding:0.6rem 1.75rem;font-size:0.85rem;font-weight:500;letter-spacing:1px;text-transform:uppercase;cursor:pointer;border:none;background:transparent;color:var(--muted);transition:background 0.2s,color 0.2s;}
-.toggle-btn.active{background:var(--accent);color:var(--black);font-weight:700;}
-.plans-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;}
-.plan-card{background:var(--card-bg);border:2px solid #2a2a2a;border-radius:12px;padding:1.75rem;position:relative;transition:border-color 0.2s,transform 0.2s,background 0.2s;display:flex;flex-direction:column;cursor:pointer;}
-.plan-card:hover{border-color:#444;transform:translateY(-2px);}
-.plan-card.selected{border-color:var(--accent);background:#1a2a10;transform:translateY(-4px);box-shadow:0 8px 32px rgba(200,245,58,0.15);}
-.plan-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--accent);color:var(--black);font-size:0.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 12px;border-radius:2px;white-space:nowrap;}
-.selected-badge{display:none;position:absolute;top:-12px;right:16px;background:#25D366;color:#fff;font-size:0.7rem;font-weight:700;padding:3px 10px;border-radius:2px;}
-.plan-card.selected .selected-badge{display:block;}
-.plan-type{font-size:0.7rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem;}
-.plan-name{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:2px;margin-bottom:0.25rem;}
-.plan-name .g{color:var(--accent);}
-.plan-protein{font-size:0.85rem;color:#888;margin-bottom:1.5rem;}
-.plan-items{list-style:none;display:flex;flex-direction:column;gap:0.6rem;margin-bottom:2rem;flex:1;}
-.plan-items li{display:flex;align-items:flex-start;gap:0.6rem;font-size:0.85rem;color:#bbb;line-height:1.4;}
-.plan-items li::before{content:'✓';color:var(--accent);font-weight:700;flex-shrink:0;}
-.plan-price{border-top:1px solid #2a2a2a;padding-top:1.25rem;display:flex;align-items:baseline;gap:0.25rem;}
-.price-num{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;color:var(--white);letter-spacing:1px;}
-.price-meals{font-size:0.8rem;color:#666;}
-.plan-cta{display:block;text-align:center;margin-top:1.25rem;padding:0.7rem;border-radius:4px;font-size:0.85rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;text-decoration:none;transition:all 0.2s;border:1px solid #333;color:var(--white);}
-.plan-card.selected .plan-cta{background:#25D366;color:#fff;border-color:#25D366;}
-.plan-card.featured:not(.selected) .plan-cta{background:var(--accent);color:var(--black);border-color:var(--accent);}
-.plan-card:not(.featured):not(.selected) .plan-cta:hover{border-color:var(--accent);color:var(--accent);}
-.select-hint{font-size:0.72rem;color:#444;text-align:center;margin-top:0.4rem;letter-spacing:1px;}
-.plan-card.selected .select-hint{color:var(--accent);}
+    /* PLANS */
+    #plans {
+      background: var(--gray);
+    }
+    .toggle {
+      display: flex;
+      margin: 2.5rem 0 3rem;
+      background: #111;
+      border: 1px solid #222;
+      border-radius: 6px;
+      width: fit-content;
+      overflow: hidden;
+    }
+    .toggle-btn {
+      padding: 0.6rem 1.75rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      color: var(--muted);
+      transition: background 0.2s, color 0.2s;
+    }
+    .toggle-btn.active {
+      background: var(--accent);
+      color: var(--black);
+      font-weight: 700;
+    }
+    .plans-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+    }
+    .plan-card {
+      background: var(--card-bg);
+      border: 2px solid #2a2a2a;
+      border-radius: 12px;
+      padding: 1.75rem;
+      position: relative;
+      transition: border-color 0.2s, transform 0.2s, background 0.2s;
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+    }
+    .plan-card:hover {
+      border-color: #444;
+      transform: translateY(-2px);
+    }
+    .plan-card.selected {
+      border-color: var(--accent);
+      background: #1a2a10;
+      transform: translateY(-4px);
+      box-shadow: 0 8px 32px rgba(200, 245, 58, 0.15);
+    }
+    .plan-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--accent);
+      color: var(--black);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 3px 12px;
+      border-radius: 2px;
+      white-space: nowrap;
+    }
+    .selected-badge {
+      display: none;
+      position: absolute;
+      top: -12px;
+      right: 16px;
+      background: #25D366;
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 2px;
+    }
+    .plan-card.selected .selected-badge {
+      display: block;
+    }
+    .plan-type {
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+    .plan-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      letter-spacing: 2px;
+      margin-bottom: 0.25rem;
+    }
+    .plan-name .g {
+      color: var(--accent);
+    }
+    .plan-protein {
+      font-size: 0.85rem;
+      color: #888;
+      margin-bottom: 1.5rem;
+    }
+    .plan-items {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-bottom: 2rem;
+      flex: 1;
+    }
+    .plan-items li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      font-size: 0.85rem;
+      color: #bbb;
+      line-height: 1.4;
+    }
+    .plan-items li::before {
+      content: '✓';
+      color: var(--accent);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .plan-price {
+      border-top: 1px solid #2a2a2a;
+      padding-top: 1.25rem;
+      display: flex;
+      align-items: baseline;
+      gap: 0.25rem;
+    }
+    .price-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.5rem;
+      color: var(--white);
+      letter-spacing: 1px;
+    }
+    .price-meals {
+      font-size: 0.8rem;
+      color: #666;
+    }
+    .plan-cta {
+      display: block;
+      text-align: center;
+      margin-top: 1.25rem;
+      padding: 0.7rem;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.2s;
+      border: 1px solid #333;
+      color: var(--white);
+    }
+    .plan-card.selected .plan-cta {
+      background: #25D366;
+      color: #fff;
+      border-color: #25D366;
+    }
+    .plan-card.featured:not(.selected) .plan-cta {
+      background: var(--accent);
+      color: var(--black);
+      border-color: var(--accent);
+    }
+    .plan-card:not(.featured):not(.selected) .plan-cta:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .select-hint {
+      font-size: 0.72rem;
+      color: #444;
+      text-align: center;
+      margin-top: 0.4rem;
+      letter-spacing: 1px;
+    }
+    .plan-card.selected .select-hint {
+      color: var(--accent);
+    }
 
-/* ===== INSTAGRAM-STYLE MEAL CAROUSEL ===== */
-#gallery{background:var(--gray2);}
-.carousel-wrap{position:relative;margin-top:3rem;}
-.carousel-track-outer{overflow:hidden;border-radius:16px;}
-.carousel-track{display:flex;gap:12px;transition:transform 0.45s cubic-bezier(0.25,0.46,0.45,0.94);will-change:transform;}
-.carousel-slide{flex:0 0 calc(33.333% - 8px);border-radius:12px;overflow:hidden;position:relative;aspect-ratio:1/1;background:#111;}
-.carousel-slide img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s;}
-.carousel-slide:hover img{transform:scale(1.04);}
-.carousel-slide .slide-overlay{position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 50%);display:flex;align-items:flex-end;padding:1rem;opacity:0;transition:opacity 0.3s;}
-.carousel-slide:hover .slide-overlay{opacity:1;}
-.slide-label{font-size:0.8rem;color:#fff;font-weight:500;letter-spacing:1px;}
-.carousel-btn{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.1rem;z-index:10;transition:all 0.2s;background:rgba(13,13,13,0.85);color:var(--white);border:1px solid #333;}
-.carousel-btn:hover{background:var(--accent);color:var(--black);border-color:var(--accent);}
-.carousel-btn.prev{left:-22px;}
-.carousel-btn.next{right:-22px;}
-.carousel-dots{display:flex;justify-content:center;gap:6px;margin-top:1.25rem;}
-.carousel-dot{width:6px;height:6px;border-radius:50%;background:#333;cursor:pointer;transition:all 0.2s;}
-.carousel-dot.active{background:var(--accent);width:20px;border-radius:3px;}
-.carousel-loading{display:flex;align-items:center;justify-content:center;height:300px;color:#444;font-size:0.9rem;letter-spacing:2px;}
+    /* ===== INSTAGRAM-STYLE MEAL CAROUSEL ===== */
+    #gallery {
+      background: var(--gray2);
+    }
+    .carousel-wrap {
+      position: relative;
+      margin-top: 3rem;
+    }
+    .carousel-track-outer {
+      overflow: hidden;
+      border-radius: 16px;
+    }
+    .carousel-track {
+      display: flex;
+      gap: 12px;
+      transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      will-change: transform;
+    }
+    .carousel-slide {
+      flex: 0 0 calc(33.333% - 8px);
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      aspect-ratio: 1/1;
+      background: #111;
+    }
+    .carousel-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s;
+    }
+    .carousel-slide:hover img {
+      transform: scale(1.04);
+    }
+    .carousel-slide .slide-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.55) 0%, transparent 50%);
+      display: flex;
+      align-items: flex-end;
+      padding: 1rem;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .carousel-slide:hover .slide-overlay {
+      opacity: 1;
+    }
+    .slide-label {
+      font-size: 0.8rem;
+      color: #fff;
+      font-weight: 500;
+      letter-spacing: 1px;
+    }
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      z-index: 10;
+      transition: all 0.2s;
+      background: rgba(13, 13, 13, 0.85);
+      color: var(--white);
+      border: 1px solid #333;
+    }
+    .carousel-btn:hover {
+      background: var(--accent);
+      color: var(--black);
+      border-color: var(--accent);
+    }
+    .carousel-btn.prev {
+      left: -22px;
+    }
+    .carousel-btn.next {
+      right: -22px;
+    }
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 1.25rem;
+    }
+    .carousel-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #333;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .carousel-dot.active {
+      background: var(--accent);
+      width: 20px;
+      border-radius: 3px;
+    }
+    .carousel-loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 300px;
+      color: #444;
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+    }
 
-/* ===== WHATSAPP-STYLE FEEDBACK SCREENSHOTS ===== */
-#feedback{background:var(--black);}
-.feedback-carousel-wrap{position:relative;margin-top:3rem;}
-.feedback-track-outer{overflow:hidden;}
-.feedback-track{display:flex;gap:16px;transition:transform 0.45s cubic-bezier(0.25,0.46,0.45,0.94);}
-.feedback-slide{flex:0 0 calc(33.333% - 11px);display:flex;flex-direction:column;gap:12px;}
+    /* ===== WHATSAPP-STYLE FEEDBACK SCREENSHOTS ===== */
+    #feedback {
+      background: var(--black);
+    }
+    .feedback-carousel-wrap {
+      position: relative;
+      margin-top: 3rem;
+    }
+    .feedback-track-outer {
+      overflow: hidden;
+    }
+    .feedback-track {
+      display: flex;
+      gap: 16px;
+      transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .feedback-slide {
+      flex: 0 0 calc(33.333% - 11px);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
 
-/* WhatsApp chat bubble style */
-.wa-screenshot{
-  background:#0d1f0b;
-  border:1px solid #1e3d1a;
-  border-radius:16px;
-  padding:0;
-  overflow:hidden;
-  position:relative;
-}
-.wa-header{
-  background:#1a3d16;
-  padding:10px 14px;
-  display:flex;align-items:center;gap:10px;
-  border-bottom:1px solid #2a5a24;
-}
-.wa-avatar{width:34px;height:34px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:700;color:var(--black);flex-shrink:0;}
-.wa-contact{flex:1;}
-.wa-contact-name{font-size:0.82rem;font-weight:600;color:#e0f0dc;}
-.wa-contact-status{font-size:0.7rem;color:#6aab65;}
-.wa-icon{font-size:1rem;}
-.wa-body{padding:14px;}
-.wa-bubble{
-  background:#1e3d1a;
-  border-radius:4px 16px 16px 16px;
-  padding:10px 14px;
-  position:relative;
-  max-width:90%;
-}
-.wa-bubble::before{content:'';position:absolute;top:0;left:-8px;width:0;height:0;border-right:8px solid #1e3d1a;border-bottom:8px solid transparent;}
-.wa-text{font-size:0.85rem;color:#d0e8cc;line-height:1.5;}
-.wa-time{font-size:0.65rem;color:#6aab65;text-align:right;margin-top:4px;display:flex;align-items:center;justify-content:flex-end;gap:3px;}
-.wa-check{color:#53c4f0;font-size:0.75rem;}
-.wa-rating{display:flex;gap:2px;margin-top:8px;}
-.wa-star{color:var(--accent);font-size:0.9rem;}
+    /* WhatsApp chat bubble style */
+    .wa-screenshot {
+      background: #0d1f0b;
+      border: 1px solid #1e3d1a;
+      border-radius: 16px;
+      padding: 0;
+      overflow: hidden;
+      position: relative;
+    }
+    .wa-header {
+      background: #1a3d16;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 1px solid #2a5a24;
+    }
+    .wa-avatar {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--black);
+      flex-shrink: 0;
+    }
+    .wa-contact {
+      flex: 1;
+    }
+    .wa-contact-name {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #e0f0dc;
+    }
+    .wa-contact-status {
+      font-size: 0.7rem;
+      color: #6aab65;
+    }
+    .wa-icon {
+      font-size: 1rem;
+    }
+    .wa-body {
+      padding: 14px;
+    }
+    .wa-bubble {
+      background: #1e3d1a;
+      border-radius: 4px 16px 16px 16px;
+      padding: 10px 14px;
+      position: relative;
+      max-width: 90%;
+    }
+    .wa-bubble::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -8px;
+      width: 0;
+      height: 0;
+      border-right: 8px solid #1e3d1a;
+      border-bottom: 8px solid transparent;
+    }
+    .wa-text {
+      font-size: 0.85rem;
+      color: #d0e8cc;
+      line-height: 1.5;
+    }
+    .wa-time {
+      font-size: 0.65rem;
+      color: #6aab65;
+      text-align: right;
+      margin-top: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 3px;
+    }
+    .wa-check {
+      color: #53c4f0;
+      font-size: 0.75rem;
+    }
+    .wa-rating {
+      display: flex;
+      gap: 2px;
+      margin-top: 8px;
+    }
+    .wa-star {
+      color: var(--accent);
+      font-size: 0.9rem;
+    }
 
-/* Image-style screenshot card */
-.screenshot-img-card{
-  border-radius:12px;
-  overflow:hidden;
-  position:relative;
-  aspect-ratio:9/16;
-  background:#111;
-}
-.screenshot-img-card img{width:100%;height:100%;object-fit:cover;display:block;}
-.screenshot-img-card .img-badge{
-  position:absolute;bottom:0;left:0;right:0;
-  background:linear-gradient(to top,rgba(0,0,0,0.8),transparent);
-  padding:1rem;
-}
-.screenshot-img-loading{display:flex;align-items:center;justify-content:center;height:100%;color:#333;font-size:0.8rem;letter-spacing:2px;aspect-ratio:9/16;}
+    /* Image-style screenshot card */
+    .screenshot-img-card {
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      aspect-ratio: 9/16;
+      background: #111;
+    }
+    .screenshot-img-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .screenshot-img-card .img-badge {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+      padding: 1rem;
+    }
+    .screenshot-img-loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      color: #333;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      aspect-ratio: 9/16;
+    }
 
-.feedback-btn{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:1px solid #333;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.1rem;z-index:10;background:rgba(13,13,13,0.85);color:var(--white);transition:all 0.2s;}
-.feedback-btn:hover{background:var(--accent);color:var(--black);border-color:var(--accent);}
-.feedback-btn.prev{left:-22px;}
-.feedback-btn.next{right:-22px;}
-.feedback-dots{display:flex;justify-content:center;gap:6px;margin-top:1.25rem;}
-.feedback-dot{width:6px;height:6px;border-radius:50%;background:#333;cursor:pointer;transition:all 0.2s;}
-.feedback-dot.active{background:var(--accent);width:20px;border-radius:3px;}
+    .feedback-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid #333;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      z-index: 10;
+      background: rgba(13, 13, 13, 0.85);
+      color: var(--white);
+      transition: all 0.2s;
+    }
+    .feedback-btn:hover {
+      background: var(--accent);
+      color: var(--black);
+      border-color: var(--accent);
+    }
+    .feedback-btn.prev {
+      left: -22px;
+    }
+    .feedback-btn.next {
+      right: -22px;
+    }
+    .feedback-dots {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 1.25rem;
+    }
+    .feedback-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #333;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .feedback-dot.active {
+      background: var(--accent);
+      width: 20px;
+      border-radius: 3px;
+    }
 
-/* DELIVERY */
-.delivery-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
-.delivery-slots{display:flex;flex-direction:column;gap:1rem;}
-.slot{display:flex;align-items:center;gap:1.5rem;background:var(--card-bg);border:1px solid #222;border-radius:10px;padding:1.25rem 1.5rem;}
-.slot-icon{width:48px;height:48px;background:#1c3a1a;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;}
-.slot-label{font-size:0.7rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);}
-.slot-time{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:2px;color:var(--accent);}
-.slot-note{font-size:0.8rem;color:#666;margin-top:0.1rem;}
-.perk{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1rem;}
-.perk-icon{width:36px;height:36px;background:var(--green);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;margin-top:2px;}
-.perk h4{font-size:0.95rem;font-weight:600;margin-bottom:0.2rem;}
-.perk p{font-size:0.85rem;color:#888;}
+    /* DELIVERY */
+    .delivery-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .delivery-slots {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .slot {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      background: var(--card-bg);
+      border: 1px solid #222;
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+    }
+    .slot-icon {
+      width: 48px;
+      height: 48px;
+      background: #1c3a1a;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+    .slot-label {
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .slot-time {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: 2px;
+      color: var(--accent);
+    }
+    .slot-note {
+      font-size: 0.8rem;
+      color: #666;
+      margin-top: 0.1rem;
+    }
+    .perk {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .perk-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--green);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .perk h4 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+    }
+    .perk p {
+      font-size: 0.85rem;
+      color: #888;
+    }
 
-/* FAQ */
-.faq-list{margin-top:3.5rem;}
-.faq-item{border-top:1px solid #1e1e1e;}
-.faq-item:last-child{border-bottom:1px solid #1e1e1e;}
-.faq-q{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 0;cursor:pointer;font-size:0.95rem;font-weight:500;}
-.faq-q span{color:var(--accent);font-size:1.2rem;transition:transform 0.3s;}
-.faq-a{font-size:0.88rem;color:#888;line-height:1.7;max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.3s;}
-.faq-item.open .faq-a{max-height:200px;padding-bottom:1.25rem;}
-.faq-item.open .faq-q span{transform:rotate(45deg);}
+    /* FAQ */
+    .faq-list {
+      margin-top: 3.5rem;
+    }
+    .faq-item {
+      border-top: 1px solid #1e1e1e;
+    }
+    .faq-item:last-child {
+      border-bottom: 1px solid #1e1e1e;
+    }
+    .faq-q {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 0;
+      cursor: pointer;
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+    .faq-q span {
+      color: var(--accent);
+      font-size: 1.2rem;
+      transition: transform 0.3s;
+    }
+    .faq-a {
+      font-size: 0.88rem;
+      color: #888;
+      line-height: 1.7;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s;
+    }
+    .faq-item.open .faq-a {
+      max-height: 200px;
+      padding-bottom: 1.25rem;
+    }
+    .faq-item.open .faq-q span {
+      transform: rotate(45deg);
+    }
 
-/* CTA */
-.cta-banner{margin:0 auto;max-width:1200px;background:linear-gradient(135deg,#1a3d16,#0e2a0b);border:1px solid #2e5228;border-radius:20px;padding:4rem 3rem;text-align:center;}
-.cta-banner h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,5vw,4rem);letter-spacing:3px;margin-bottom:1rem;}
-.cta-banner p{color:#9dbd97;max-width:500px;margin:0 auto 2rem;font-size:1rem;}
-.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
-.btn-ig{background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);color:#fff;padding:0.85rem 2rem;border-radius:4px;font-weight:700;font-size:0.9rem;text-decoration:none;letter-spacing:1px;text-transform:uppercase;transition:opacity 0.2s;display:inline-flex;align-items:center;gap:8px;}
-.btn-ig:hover{opacity:0.85;}
+    /* CTA */
+    .cta-banner {
+      margin: 0 auto;
+      max-width: 1200px;
+      background: linear-gradient(135deg, #1a3d16, #0e2a0b);
+      border: 1px solid #2e5228;
+      border-radius: 20px;
+      padding: 4rem 3rem;
+      text-align: center;
+    }
+    .cta-banner h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      letter-spacing: 3px;
+      margin-bottom: 1rem;
+    }
+    .cta-banner p {
+      color: #9dbd97;
+      max-width: 500px;
+      margin: 0 auto 2rem;
+      font-size: 1rem;
+    }
+    .cta-btns {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn-ig {
+      background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+      color: #fff;
+      padding: 0.85rem 2rem;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-decoration: none;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: opacity 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-ig:hover {
+      opacity: 0.85;
+    }
 
-footer{border-top:1px solid #1a1a1a;padding:2.5rem 2rem;}
-.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
-.footer-logo-img{height:36px;width:auto;}
-.footer-copy{font-size:0.8rem;color:#444;}
-.footer-links{display:flex;gap:1.5rem;}
-.footer-links a{font-size:0.8rem;color:#666;text-decoration:none;}
-.footer-links a:hover{color:var(--accent);}
+    footer {
+      border-top: 1px solid #1a1a1a;
+      padding: 2.5rem 2rem;
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-logo-img {
+      height: 36px;
+      width: auto;
+    }
+    .footer-copy {
+      font-size: 0.8rem;
+      color: #444;
+    }
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+    .footer-links a {
+      font-size: 0.8rem;
+      color: #666;
+      text-decoration: none;
+    }
+    .footer-links a:hover {
+      color: var(--accent);
+    }
 
-.wa-float{position:fixed;bottom:1.5rem;right:1.5rem;z-index:999;background:#25D366;color:#fff;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.6rem;text-decoration:none;box-shadow:0 4px 16px rgba(37,211,102,0.4);transition:transform 0.2s;}
-.wa-float:hover{transform:scale(1.1);}
+    .wa-float {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 999;
+      background: #25D366;
+      color: #fff;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      text-decoration: none;
+      box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
+      transition: transform 0.2s;
+    }
+    .wa-float:hover {
+      transform: scale(1.1);
+    }
 
-.fade-in{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease;}
-.fade-in.visible{opacity:1;transform:none;}
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: none;
+    }
 
-@media(max-width:900px){
-  nav ul{display:none;}
-  .hero-grid{grid-template-columns:1fr;}
-  .hero-visual{display:block;margin-top:3rem;}
-  .badge-float{display:none;}
-  .delivery-pill{display:none;}
-  .steps{grid-template-columns:1fr;}
-  .plans-grid{grid-template-columns:1fr 1fr;}
-  .delivery-grid{grid-template-columns:1fr;}
-  .carousel-slide{flex:0 0 calc(50% - 6px);}
-  .feedback-slide{flex:0 0 calc(50% - 8px);}
-}
-@media(max-width:600px){
-  .plans-grid{grid-template-columns:1fr;}
-  .hero h1{font-size:3rem;}
-  .carousel-slide{flex:0 0 calc(100% - 0px);}
-  .feedback-slide{flex:0 0 100%;}
-  .cta-btns{flex-direction:column;align-items:center;}
-}
-</style>
+    @media (max-width: 900px) {
+      nav ul {
+        display: none;
+      }
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero-visual {
+        display: block;
+        margin-top: 3rem;
+      }
+      .badge-float {
+        display: none;
+      }
+      .delivery-pill {
+        display: none;
+      }
+      .steps {
+        grid-template-columns: 1fr;
+      }
+      .plans-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .delivery-grid {
+        grid-template-columns: 1fr;
+      }
+      .carousel-slide {
+        flex: 0 0 calc(50% - 6px);
+      }
+      .feedback-slide {
+        flex: 0 0 calc(50% - 8px);
+      }
+    }
+    @media (max-width: 600px) {
+      .plans-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero h1 {
+        font-size: 3rem;
+      }
+      .carousel-slide {
+        flex: 0 0 calc(100% - 0px);
+      }
+      .feedback-slide {
+        flex: 0 0 100%;
+      }
+      .cta-btns {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<nav>
-  <img src="" alt="ProPackD" class="logo-img"/>
-  <ul>
-    <li><a href="#how">How It Works</a></li>
-    <li><a href="#plans">Plans</a></li>
-    <li><a href="#gallery">Meals</a></li>
-    <li><a href="#feedback">Reviews</a></li>
-    <li><a href="#faq">FAQ</a></li>
-  </ul>
-  <a href="https://wa.me/918248522590?text=Hi%20ProPackD!%20I%20want%20to%20know%20more%20about%20your%20meal%20plans." target="_blank" class="nav-cta">💬 WhatsApp</a>
-</nav>
+  <nav>
+    <img src="" alt="ProPackD" class="logo-img" />
+    <ul>
+      <li><a href="#plans">Plans</a></li>
+      <li><a href="#how">How It Works</a></li>
+      <li><a href="#gallery">Meals</a></li>
+      <li><a href="#feedback">Reviews</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <a href="https://wa.me/918248522590?text=Hi%20ProPackD!%20I%20want%20to%20know%20more%20about%20your%20meal%20plans." target="_blank" class="nav-cta">💬 WhatsApp</a>
+  </nav>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-grid">
-    <div>
-      <div class="hero-tag">Chennai's Gym Nutrition Partner</div>
-      <h1>FUEL YOUR<br/><span class="highlight">GAINS.</span><br/>SKIP THE<br/>GUESSWORK.</h1>
-      <p>High-protein meals packed with precision, delivered straight to your gym every morning and evening. No cooking. No counting. Just results.</p>
-      <div class="hero-btns">
-        <a href="https://wa.me/918248522590?text=Hi%20ProPackD!%20I%20want%20to%20subscribe%20to%20a%20meal%20plan." target="_blank" class="btn-wa">💬 Order on WhatsApp</a>
-        <a href="https://www.instagram.com/propackd/" target="_blank" class="btn-outline">📸 Instagram</a>
-      </div>
-      <div class="hero-stats">
-        <div><div class="stat-num">80G</div><div class="stat-label">Max Protein</div></div>
-        <div><div class="stat-num">4</div><div class="stat-label">Meal Plans</div></div>
-        <div><div class="stat-num">2×</div><div class="stat-label">Daily Delivery</div></div>
-      </div>
-    </div>
-    <div class="hero-visual">
-      <div class="badge-float">
-        <div class="num" id="heroBadgeNum">80G</div>
-        <div class="txt">Protein/Meal</div>
-      </div>
-      <div class="macro-card">
-        <h3 id="macroTitle">Signature 80 — Macros</h3>
-        <div class="macro-bars">
-          <div class="macro-bar-row"><div class="macro-bar-label">Protein</div><div class="macro-bar-track"><div class="macro-bar-fill fill-protein" id="barProtein" style="width:78%"></div></div><div class="macro-bar-val" id="valProtein">~80g</div></div>
-          <div class="macro-bar-row"><div class="macro-bar-label">Carbs</div><div class="macro-bar-track"><div class="macro-bar-fill fill-carbs" id="barCarbs" style="width:45%"></div></div><div class="macro-bar-val" id="valCarbs">~35g</div></div>
-          <div class="macro-bar-row"><div class="macro-bar-label">Fat</div><div class="macro-bar-track"><div class="macro-bar-fill fill-fat" id="barFat" style="width:22%"></div></div><div class="macro-bar-val" id="valFat">~12g</div></div>
-        </div>
-        <div class="macro-tags" id="macroTags">
-          <span class="macro-tag">120g Chicken</span><span class="macro-tag">1 Egg</span><span class="macro-tag">Plant Protein</span>
-        </div>
-      </div>
-      <div class="delivery-pill"><div class="pill-dot"></div><span>Delivered to your gym daily</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- HOW IT WORKS -->
-<section id="how">
-  <div class="section-inner">
-    <div class="section-tag">Simple Process</div>
-    <h2 class="section-title">HOW IT WORKS</h2>
-    <p class="section-sub">Three steps to never worry about post-workout nutrition again.</p>
-    <div class="steps">
-      <div class="step fade-in"><div class="step-num">01</div><div class="step-icon">🎯</div><h3>Pick Your Plan</h3><p>Choose from 4 protein plans — veg or non-veg — weekly or monthly. Message us on WhatsApp and we'll set you up.</p></div>
-      <div class="step fade-in"><div class="step-num">02</div><div class="step-icon">📦</div><h3>We Prep & Pack</h3><p>Every meal is freshly prepared with exact protein quantities. Packed hygienically and sealed for delivery.</p></div>
-      <div class="step fade-in"><div class="step-num">03</div><div class="step-icon">🏋️</div><h3>Pickup at Gym</h3><p>Your meal arrives at your gym on time. Collect it before or after your session and fuel your recovery.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- PLANS -->
-<section id="plans">
-  <div class="section-inner">
-    <div class="section-tag">Pricing</div>
-    <h2 class="section-title">CHOOSE YOUR PLAN</h2>
-    <p class="section-sub">Tap a plan to select it, then order directly on WhatsApp. No app. No checkout.</p>
-    <div class="toggle">
-      <button class="toggle-btn active" onclick="switchPlan('weekly',this)">Weekly · 5 Meals</button>
-      <button class="toggle-btn" onclick="switchPlan('monthly',this)">Monthly · 20 Meals</button>
-    </div>
-    <div class="plans-grid" id="plansGrid"></div>
-    <p style="text-align:center;margin-top:1.5rem;font-size:0.85rem;color:#555;">👆 Tap any plan to see macros update, then WhatsApp us to order</p>
-  </div>
-</section>
-
-<!-- MEAL CAROUSEL (Instagram style) -->
-<section id="gallery">
-  <div class="section-inner">
-    <div class="section-tag">Real Meals</div>
-    <h2 class="section-title">WHAT YOU ACTUALLY GET</h2>
-    <p class="section-sub">No stock photos. Freshly prepared, weighed and packed every single day.</p>
-    <div class="carousel-wrap">
-      <button class="carousel-btn prev" onclick="moveCarousel(-1)">&#8592;</button>
-      <div class="carousel-track-outer">
-        <div class="carousel-track" id="mealTrack">
-          <div class="carousel-loading">Loading meals...</div>
-        </div>
-      </div>
-      <button class="carousel-btn next" onclick="moveCarousel(1)">&#8594;</button>
-    </div>
-    <div class="carousel-dots" id="mealDots"></div>
-    <p style="margin-top:1.5rem;font-size:0.8rem;color:#444;text-align:center;letter-spacing:1px;">Real meals, freshly prepared every day</p>
-  </div>
-</section>
-
-<!-- CUSTOMER FEEDBACK (WhatsApp screenshot style) -->
-<section id="feedback">
-  <div class="section-inner">
-    <div class="section-tag">Customer Love</div>
-    <h2 class="section-title">WHAT MEMBERS SAY</h2>
-    <p class="section-sub">Real messages from real gym-goers. Unfiltered.</p>
-    <div class="feedback-carousel-wrap">
-      <button class="feedback-btn prev" onclick="moveFeedback(-1)">&#8592;</button>
-      <div class="feedback-track-outer">
-        <div class="feedback-track" id="feedbackTrack"></div>
-      </div>
-      <button class="feedback-btn next" onclick="moveFeedback(1)">&#8594;</button>
-    </div>
-    <div class="feedback-dots" id="feedbackDots"></div>
-    <p style="margin-top:1.5rem;font-size:0.8rem;color:#444;text-align:center;letter-spacing:1px;">Real messages from real gym-goers</p>
-  </div>
-</section>
-
-<!-- DELIVERY -->
-<section id="delivery" style="background:var(--gray);">
-  <div class="section-inner">
-    <div class="delivery-grid">
+  <!-- HERO + DELIVERY (combined) -->
+  <section class="hero" id="intro-delivery">
+    <div class="hero-bg"></div>
+    <div class="hero-grid">
       <div>
-        <div class="section-tag">Gym-Direct Delivery</div>
-        <h2 class="section-title">MEALS AT YOUR GYM DOOR</h2>
-        <p class="section-sub" style="margin-bottom:2rem;">Skip the kitchen. We deliver directly to your gym so you can eat right after training.</p>
-        <div class="perk"><div class="perk-icon">🛡️</div><div><h4>Freshly Prepared Daily</h4><p>No frozen meals. Everything is cooked fresh for each delivery window.</p></div></div>
-        <div class="perk"><div class="perk-icon">⚖️</div><div><h4>Precise Protein Portions</h4><p>All chicken quantities are post-cooked weight — you get exactly what you pay for.</p></div></div>
-        <div class="perk"><div class="perk-icon">🥗</div><div><h4>Veg & Non-Veg Options</h4><p>Every plan has a matching veg alternative — same protein targets, different sources.</p></div></div>
-      </div>
-      <div class="delivery-slots">
-        <div class="slot"><div class="slot-icon">🌅</div><div><div class="slot-label">Breakfast Window</div><div class="slot-time">7:30 – 9:00 AM</div><div class="slot-note">Perfect for pre or post morning session</div></div></div>
-        <div class="slot"><div class="slot-icon">🌙</div><div><div class="slot-label">Dinner Window</div><div class="slot-time">7:00 – 9:00 PM</div><div class="slot-note">Ideal for evening gym-goers</div></div></div>
-        <div style="background:#0d1f0b;border:1px solid #1e3d1a;border-radius:10px;padding:1.25rem 1.5rem;">
-          <div style="font-size:0.7rem;letter-spacing:2px;color:#5a8a55;text-transform:uppercase;margin-bottom:0.5rem;">One Meal Per Day</div>
-          <div style="font-size:0.9rem;color:#bbb;line-height:1.6;">Choose either breakfast or dinner — we deliver one meal per day, keeping things simple and consistent.</div>
+        <div class="hero-tag">Chennai's Gym Nutrition Partner</div>
+        <h1>FUEL YOUR<br /><span class="highlight">GAINS.</span><br />SKIP THE<br />GUESSWORK.</h1>
+        <p>High-protein meals packed with precision, delivered straight to your gym every morning and evening. No cooking. No counting. Just results.</p>
+        <div class="hero-btns">
+          <a href="https://wa.me/918248522590?text=Hi%20ProPackD!%20I%20want%20to%20subscribe%20to%20a%20meal%20plan." target="_blank" class="btn-wa">💬 Order on WhatsApp</a>
+          <a href="https://www.instagram.com/propackd/" target="_blank" class="btn-outline">📸 Instagram</a>
+        </div>
+        <div class="hero-stats">
+          <div><div class="stat-num">80G</div><div class="stat-label">Max Protein</div></div>
+          <div><div class="stat-num">4</div><div class="stat-label">Meal Plans</div></div>
+          <div><div class="stat-num">2×</div><div class="stat-label">Daily Delivery</div></div>
         </div>
       </div>
+      <div class="hero-visual">
+        <div class="badge-float">
+          <div class="num" id="heroBadgeNum">80G</div>
+          <div class="txt">Protein/Meal</div>
+        </div>
+        <div class="macro-card">
+          <h3 id="macroTitle">Signature 80 — Macros</h3>
+          <div class="macro-bars">
+            <div class="macro-bar-row"><div class="macro-bar-label">Protein</div><div class="macro-bar-track"><div class="macro-bar-fill fill-protein" id="barProtein" style="width:78%"></div></div><div class="macro-bar-val" id="valProtein">~80g</div></div>
+            <div class="macro-bar-row"><div class="macro-bar-label">Carbs</div><div class="macro-bar-track"><div class="macro-bar-fill fill-carbs" id="barCarbs" style="width:45%"></div></div><div class="macro-bar-val" id="valCarbs">~35g</div></div>
+            <div class="macro-bar-row"><div class="macro-bar-label">Fat</div><div class="macro-bar-track"><div class="macro-bar-fill fill-fat" id="barFat" style="width:22%"></div></div><div class="macro-bar-val" id="valFat">~12g</div></div>
+          </div>
+          <div class="macro-tags" id="macroTags">
+            <span class="macro-tag">120g Chicken</span><span class="macro-tag">1 Egg</span><span class="macro-tag">Plant Protein</span>
+          </div>
+        </div>
+        <div class="delivery-pill"><div class="pill-dot"></div><span>Delivered to your gym daily</span></div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- FAQ -->
-<section id="faq">
-  <div class="section-inner" style="max-width:720px;">
-    <div class="section-tag">Common Questions</div>
-    <h2 class="section-title">GOT QUESTIONS?</h2>
-    <div class="faq-list">
-      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How do I order? <span>+</span></div><div class="faq-a">Just message us on WhatsApp or DM us on Instagram. Tell us which plan you want, your preferred delivery slot (breakfast or dinner), and your gym name. We'll confirm and get you started right away.</div></div>
-      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Can I switch between veg and non-veg? <span>+</span></div><div class="faq-a">Yes! Let us know your preference when ordering on WhatsApp. We allow switches between billing cycles based on availability.</div></div>
-      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What does "post-cooked weight" mean? <span>+</span></div><div class="faq-a">Chicken loses moisture when cooked. We weigh chicken after cooking so you get exactly 120g of edible, cooked protein — not raw weight that shrinks down.</div></div>
-      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Which gyms do you deliver to? <span>+</span></div><div class="faq-a">We currently serve select gyms in Chennai. Message us on WhatsApp or Instagram to check if your gym is covered or to request we add it to our route.</div></div>
-      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What is the refund or pause policy? <span>+</span></div><div class="faq-a">Reach out to us on WhatsApp for pause or cancellation requests. Weekly plans are more flexible; monthly plans offer better value but limited mid-cycle changes.</div></div>
+  <!-- PLAN SELECTION (moved up) -->
+  <section id="plans">
+    <div class="section-inner">
+      <div class="section-tag">Pricing</div>
+      <h2 class="section-title">CHOOSE YOUR PLAN</h2>
+      <p class="section-sub">Tap a plan to select it, then order directly on WhatsApp. No app. No checkout.</p>
+      <div class="toggle">
+        <button class="toggle-btn active" onclick="switchPlan('weekly',this)">Weekly · 5 Meals</button>
+        <button class="toggle-btn" onclick="switchPlan('monthly',this)">Monthly · 20 Meals</button>
+      </div>
+      <div class="plans-grid" id="plansGrid"></div>
+      <p style="text-align:center;margin-top:1.5rem;font-size:0.85rem;color:#555;">👆 Tap any plan to see macros update, then WhatsApp us to order</p>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- CTA -->
-<section style="padding:3rem 2rem 6rem;">
-  <div class="cta-banner fade-in">
-    <h2>READY TO START<br/>EATING SMARTER?</h2>
-    <p>Message us and we'll get you set up in minutes. No app. No checkout. Just a chat.</p>
-    <div class="cta-btns">
-      <a href="https://wa.me/918248522590?text=Hi%20ProPackD!%20I%20want%20to%20subscribe%20to%20a%20meal%20plan." target="_blank" class="btn-wa" style="font-size:1rem;padding:1rem 2rem;">💬 Order on WhatsApp</a>
-      <a href="https://www.instagram.com/propackd/" target="_blank" class="btn-ig" style="font-size:1rem;padding:1rem 2rem;">📸 Follow on Instagram</a>
+  <!-- HOW IT WORKS -->
+  <section id="how">
+    <div class="section-inner">
+      <div class="section-tag">Simple Process</div>
+      <h2 class="section-title">HOW IT WORKS</h2>
+      <p class="section-sub">Three steps to never worry about post-workout nutrition again.</p>
+      <div class="steps">
+        <div class="step fade-in"><div class="step-num">01</div><div class="step-icon">🎯</div><h3>Pick Your Plan</h3><p>Choose from 4 protein plans — veg or non-veg — weekly or monthly. Message us on WhatsApp and we'll set you up.</p></div>
+        <div class="step fade-in"><div class="step-num">02</div><div class="step-icon">📦</div><h3>We Prep & Pack</h3><p>Every meal is freshly prepared with exact protein quantities. Packed hygienically and sealed for delivery.</p></div>
+        <div class="step fade-in"><div class="step-num">03</div><div class="step-icon">🏋️</div><h3>Pickup at Gym</h3><p>Your meal arrives at your gym on time. Collect it before or after your session and fuel your recovery.</p></div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<footer>
-  <div class="footer-inner">
-    <img src="" alt="ProPackD" class="footer-logo-img"/>
-    <div class="footer-copy">© 2025 ProPackD. All rights reserved.</div>
-    <div class="footer-links">
-      <a href="https://www.instagram.com/propackd/" target="_blank">Instagram</a>
-      <a href="https://wa.me/918248522590" target="_blank">WhatsApp</a>
+  <!-- MEAL CAROUSEL (Instagram style) -->
+  <section id="gallery">
+    <div class="section-inner">
+      <div class="section-tag">Real Meals</div>
+      <h2 class="section-title">WHAT YOU ACTUALLY GET</h2>
+      <p class="section-sub">No stock photos. Freshly prepared, weighed and packed every single day.</p>
+      <div class="carousel-wrap">
+        <button class="carousel-btn prev" onclick="moveCarousel(-1)">&#8592;</button>
+        <div class="carousel-track-outer">
+          <div class="carousel-track" id="mealTrack">
+            <div class="carousel-loading">Loading meals...</div>
+          </div>
+        </div>
+        <button class="carousel-btn next" onclick="moveCarousel(1)">&#8594;</button>
+      </div>
+      <div class="carousel-dots" id="mealDots"></div>
+      <p style="margin-top:1.5rem;font-size:0.8rem;color:#444;text-align:center;letter-spacing:1px;">Real meals, freshly prepared every day</p>
     </div>
-  </div>
-</footer>
+  </section>
 
-<a href="https://wa.me/918248522590?text=Hi%20ProPackD!%20I%20want%20to%20know%20more%20about%20your%20meal%20plans." target="_blank" class="wa-float">💬</a>
+  <!-- CUSTOMER FEEDBACK (WhatsApp screenshot style) -->
+  <section id="feedback">
+    <div class="section-inner">
+      <div class="section-tag">Customer Love</div>
+      <h2 class="section-title">WHAT MEMBERS SAY</h2>
+      <p class="section-sub">Real messages from real gym-goers. Unfiltered.</p>
+      <div class="feedback-carousel-wrap">
+        <button class="feedback-btn prev" onclick="moveFeedback(-1)">&#8592;</button>
+        <div class="feedback-track-outer">
+          <div class="feedback-track" id="feedbackTrack"></div>
+        </div>
+        <button class="feedback-btn next" onclick="moveFeedback(1)">&#8594;</button>
+      </div>
+      <div class="feedback-dots" id="feedbackDots"></div>
+      <p style="margin-top:1.5rem;font-size:0.8rem;color:#444;text-align:center;letter-spacing:1px;">Real messages from real gym-goers</p>
+    </div>
+  </section>
 
-<script>
-// =============================================
-// IMAGE CONFIG — update filenames here when
-// you add/change photos in GitHub folders
-// =============================================
-var BASE = 'https://haswic.github.io/Propackd';
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="section-inner" style="max-width:720px;">
+      <div class="section-tag">Common Questions</div>
+      <h2 class="section-title">GOT QUESTIONS?</h2>
+      <div class="faq-list">
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How do I order? <span>+</span></div><div class="faq-a">Just message us on WhatsApp or DM us on Instagram. Tell us which plan you want, your preferred delivery slot (breakfast or dinner), and your gym name. We'll confirm and get you started right away.</div></div>
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Can I switch between veg and non-veg? <span>+</span></div><div class="faq-a">Yes! Let us know your preference when ordering on WhatsApp. We allow switches between billing cycles based on availability.</div></div>
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What does "post-cooked weight" mean? <span>+</span></div><div class="faq-a">Chicken loses moisture when cooked. We weigh chicken after cooking so you get exactly 120g of edible, cooked protein — not raw weight that shrinks down.</div></div>
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Which gyms do you deliver to? <span>+</span></div><div class="faq-a">We currently serve select gyms in Chennai. Message us on WhatsApp or Instagram to check if your gym is covered or to request we add it to our route.</div></div>
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What is the refund or pause policy? <span>+</span></div><div class="faq-a">Reach out to us on WhatsApp for pause or cancellation requests. Weekly plans are more flexible; monthly plans offer better value but limited mid-cycle changes.</div></div>
+      </div>
+    </div>
+  </section>
 
-var MEAL_IMAGES = [
-  { file: 'E40-1', label: 'Essential 40' },
-  { file: 'E40-2', label: 'Essential 40' },
-  { file: 'E40-3', label: 'Essential 40' },
-  { file: 'E40-4', label: 'Essential 40' },
-  { file: 'E40-5', label: 'Essential 40' },
-  { file: 'S40',   label: 'Smart 40 Veg' },
-];
+  <!-- CTA -->
+  <section style="padding:3rem 2rem 6rem;">
+    <div class="cta-banner fade-in">
+      <h2>READY TO START<br />EATING SMARTER?</h2>
+      <p>Message us and we'll get you set up in minutes. No app. No checkout. Just a chat.</p>
+      <div class="cta-btns">
+        <a href="https://wa.me/918248522590?text=Hi%20ProPackD!%20I%20want%20to%20subscribe%20to%20a%20meal%20plan." target="_blank" class="btn-wa" style="font-size:1rem;padding:1rem 2rem;">💬 Order on WhatsApp</a>
+        <a href="https://www.instagram.com/propackd/" target="_blank" class="btn-ig" style="font-size:1rem;padding:1rem 2rem;">📸 Follow on Instagram</a>
+      </div>
+    </div>
+  </section>
 
-var FEEDBACK_FILES = [
-  'review1', 'review2', 'review3',
-  'review4', 'review5', 'review6','review7'
-];
+  <footer>
+    <div class="footer-inner">
+      <img src="" alt="ProPackD" class="footer-logo-img" />
+      <div class="footer-copy">© 2025 ProPackD. All rights reserved.</div>
+      <div class="footer-links">
+        <a href="https://www.instagram.com/propackd/" target="_blank">Instagram</a>
+        <a href="https://wa.me/918248522590" target="_blank">WhatsApp</a>
+      </div>
+    </div>
+  </footer>
 
-// Tries jpg first, then png, then jpeg
-function mealUrl(fname) {
-  return BASE + '/meals/' + fname;
-}
-function reviewUrl(fname) {
-  return BASE + '/feedback/' + fname;
-}
+  <a href="https://wa.me/918248522590?text=Hi%20ProPackD!%20I%20want%20to%20know%20more%20about%20your%20meal%20plans." target="_blank" class="wa-float">💬</a>
 
-// Smart image loader: tries .jpg → .png → .jpeg
-function tryExtensions(imgEl, base, exts, fallbackFn) {
-  var i = 0;
-  function tryNext() {
-    if (i >= exts.length) { fallbackFn(); return; }
-    imgEl.onerror = tryNext;
-    imgEl.src = base + '.' + exts[i++];
-  }
-  tryNext();
-}
-//=====Feedback to Update====
-var TEXT_REVIEWS = [
-  { initials:'RK', name:'Rahul K.',  plan:'Monthly Signature 80', text:'Finally stopped overthinking post-workout meals. ProPackD just shows up at my gym and I eat. Simple as that.', time:'Yesterday, 8:14 AM', stars:5 },
-  { initials:'PT', name:'Priya T.',  plan:'Monthly Smart 80', text:'The Smart 80 veg plan is incredible. 80g protein from paneer and soya. Did not think that was possible in a single meal!', time:'2 days ago, 7:52 PM', stars:5 },
-  { initials:'AM', name:'Arun M.',   plan:'CrossFit Member', text:'Started with weekly Essential 40. Switched to monthly Signature 80 within the first week. Always fresh and perfectly portioned.', time:'3 days ago, 8:02 AM', stars:5 },
-  { initials:'DS', name:'Divya S.',  plan:'Smart 40 Veg', text:'As a vegetarian I was skeptical about hitting 40g protein. But their channa and paneer combo is amazing!', time:'1 week ago, 7:45 PM', stars:5 },
-  { initials:'KR', name:'Karthik R.',plan:'Signature 80 Weekly', text:'The hariyali chicken is next level. My whole gym has started ordering now!', time:'1 week ago, 8:30 AM', stars:5 },
-  { initials:'MV', name:'Meena V.',  plan:'Essential 40 Monthly', text:'Delivery is always on time. Zero effort on my part and my macros are sorted for the day. 10/10', time:'5 days ago, 7:18 PM', stars:5 },
-  { initials:'JA', name:'Aswini J.',  plan:'Essential 40', text:'Everyday new meals keep motivated to weight loss.', time:'20 days ago, 9:18 PM', stars:4 },
-];
+  <script>
+    // =============================================
+    // IMAGE CONFIG — update filenames here when
+    // you add/change photos in GitHub folders
+    // =============================================
+    var BASE = 'https://haswic.github.io/Propackd';
 
-// ===== MEAL CAROUSEL =====
-var mealIdx = 0;
-function getMealPerView() {
-  return window.innerWidth <= 600 ? 1 : window.innerWidth <= 900 ? 2 : 3;
-}
+    var MEAL_IMAGES = [
+      { file: 'E40-1', label: 'Essential 40' },
+      { file: 'E40-2', label: 'Essential 40' },
+      { file: 'E40-3', label: 'Essential 40' },
+      { file: 'E40-4', label: 'Essential 40' },
+      { file: 'E40-5', label: 'Essential 40' },
+      { file: 'S40', label: 'Smart 40 Veg' },
+    ];
 
-function buildMealCarousel() {
-  var track = document.getElementById('mealTrack');
-  var dots  = document.getElementById('mealDots');
-  var perView = getMealPerView();
+    var FEEDBACK_FILES = [
+      'review1', 'review2', 'review3',
+      'review4', 'review5', 'review6', 'review7'
+    ];
 
-  // Build slides
-  track.innerHTML = '';
-  MEAL_IMAGES.forEach(function(m) {
-    var slide = document.createElement('div');
-    slide.className = 'carousel-slide';
+    function mealUrl(fname) {
+      return BASE + '/meals/' + fname;
+    }
 
-    var img = document.createElement('img');
-    img.alt = m.label;
-    img.loading = 'lazy';
-    tryExtensions(img, mealUrl(m.file), ['jpg','png','jpeg'], function() {
-      slide.style.background = '#1a1a1a';
-      slide.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:#444;font-size:0.85rem;letter-spacing:1px;">' + m.label + '</div>';
-    });
+    function reviewUrl(fname) {
+      return BASE + '/feedback/' + fname;
+    }
 
-    var overlay = document.createElement('div');
-    overlay.className = 'slide-overlay';
-    overlay.innerHTML = '<div class="slide-label">' + m.label + ' &mdash; ' + m.file + '</div>';
+    function tryExtensions(imgEl, base, exts, fallbackFn) {
+      var i = 0;
 
-    slide.appendChild(img);
-    slide.appendChild(overlay);
-    track.appendChild(slide);
-  });
+      function tryNext() {
+        if (i >= exts.length) { fallbackFn(); return; }
+        imgEl.onerror = tryNext;
+        imgEl.src = base + '.' + exts[i++];
+      }
+      tryNext();
+    }
+    //=====Feedback to Update====
+    var TEXT_REVIEWS = [
+      { initials: 'RK', name: 'Rahul K.', plan: 'Monthly Signature 80', text: 'Finally stopped overthinking post-workout meals. ProPackD just shows up at my gym and I eat. Simple as that.', time: 'Yesterday, 8:14 AM',
+        stars: 5 },
+      { initials: 'PT', name: 'Priya T.', plan: 'Monthly Smart 80', text: 'The Smart 80 veg plan is incredible. 80g protein from paneer and soya. Did not think that was possible in a single meal!',
+        time: '2 days ago, 7:52 PM', stars: 5 },
+      { initials: 'AM', name: 'Arun M.', plan: 'CrossFit Member', text: 'Started with weekly Essential 40. Switched to monthly Signature 80 within the first week. Always fresh and perfectly portioned.',
+        time: '3 days ago, 8:02 AM', stars: 5 },
+      { initials: 'DS', name: 'Divya S.', plan: 'Smart 40 Veg', text: 'As a vegetarian I was skeptical about hitting 40g protein. But their channa and paneer combo is amazing!', time: '1 week ago, 7:45 PM',
+        stars: 5 },
+      { initials: 'KR', name: 'Karthik R.', plan: 'Signature 80 Weekly', text: 'The hariyali chicken is next level. My whole gym has started ordering now!', time: '1 week ago, 8:30 AM', stars: 5 },
+      { initials: 'MV', name: 'Meena V.', plan: 'Essential 40 Monthly', text: 'Delivery is always on time. Zero effort on my part and my macros are sorted for the day. 10/10', time: '5 days ago, 7:18 PM',
+        stars: 5 },
+      { initials: 'JA', name: 'Aswini J.', plan: 'Essential 40', text: 'Everyday new meals keep motivated to weight loss.', time: '20 days ago, 9:18 PM', stars: 4 },
+    ];
 
-  // Build dots
-  var pages = Math.ceil(MEAL_IMAGES.length / perView);
-  dots.innerHTML = '';
-  for (var i = 0; i < pages; i++) {
-    (function(idx){
-      var dot = document.createElement('div');
-      dot.className = 'carousel-dot' + (idx===0?' active':'');
-      dot.onclick = function(){ goMeal(idx); };
-      dots.appendChild(dot);
-    })(i);
-  }
-}
+    // ===== MEAL CAROUSEL =====
+    var mealIdx = 0;
 
-function moveCarousel(dir) {
-  var perView = getMealPerView();
-  var pages = Math.ceil(MEAL_IMAGES.length / perView);
-  mealIdx = (mealIdx + dir + pages) % pages;
-  applyMealPosition();
-}
-function goMeal(i) { mealIdx = i; applyMealPosition(); }
-function applyMealPosition() {
-  var perView = getMealPerView();
-  var slides = document.querySelectorAll('.carousel-slide');
-  if (!slides.length) return;
-  var slideW = slides[0].offsetWidth + 12;
-  document.getElementById('mealTrack').style.transform = 'translateX(-' + (mealIdx * perView * slideW) + 'px)';
-  document.querySelectorAll('.carousel-dot').forEach(function(d,i){ d.classList.toggle('active', i===mealIdx); });
-}
+    function getMealPerView() {
+      return window.innerWidth <= 600 ? 1 : window.innerWidth <= 900 ? 2 : 3;
+    }
 
-// ===== FEEDBACK CAROUSEL =====
-var fbIdx = 0;
-function getFbPerView() {
-  return window.innerWidth <= 600 ? 1 : window.innerWidth <= 900 ? 2 : 3;
-}
+    function buildMealCarousel() {
+      var track = document.getElementById('mealTrack');
+      var dots = document.getElementById('mealDots');
+      var perView = getMealPerView();
 
-function buildFeedbackCarousel() {
-  var track = document.getElementById('feedbackTrack');
-  var dots  = document.getElementById('feedbackDots');
+      track.innerHTML = '';
+      MEAL_IMAGES.forEach(function(m) {
+        var slide = document.createElement('div');
+        slide.className = 'carousel-slide';
 
-  // Group reviews into columns of 2
-  var cols = [];
-  for (var i = 0; i < TEXT_REVIEWS.length; i += 2) {
-    var col = [TEXT_REVIEWS[i]];
-    if (TEXT_REVIEWS[i+1]) col.push(TEXT_REVIEWS[i+1]);
-    cols.push(col);
-  }
-
-  track.innerHTML = '';
-  cols.forEach(function(col, ci) {
-    var slide = document.createElement('div');
-    slide.className = 'feedback-slide';
-
-    col.forEach(function(r, ri) {
-      var imgIdx = ci * 2 + ri;
-      var fname  = FEEDBACK_FILES[imgIdx];
-      var stars  = '';
-      for (var s = 0; s < r.stars; s++) stars += '<span class="wa-star">&#9733;</span>';
-
-      var card = document.createElement('div');
-      card.className = 'wa-screenshot';
-
-      // Header
-      var header = '<div class="wa-header">' +
-        '<div class="wa-avatar">' + r.initials + '</div>' +
-        '<div class="wa-contact">' +
-          '<div class="wa-contact-name">' + r.name + '</div>' +
-          '<div class="wa-contact-status">' + r.plan + '</div>' +
-        '</div>' +
-        '<div class="wa-icon">&#128172;</div>' +
-      '</div>';
-
-      // Text bubble fallback
-      var bubble = '<div class="wa-bubble">' +
-        '<div class="wa-text">' + r.text + '</div>' +
-        '<div class="wa-rating">' + stars + '</div>' +
-        '<div class="wa-time"><span>' + r.time + '</span><span class="wa-check">&#10003;&#10003;</span></div>' +
-      '</div>';
-
-      card.innerHTML = header;
-
-      if (fname) {
-        // Try loading screenshot image
-        var imgEl = document.createElement('img');
-        imgEl.alt = 'Customer review';
-        imgEl.style.cssText = 'width:100%;display:block;max-height:280px;object-fit:cover;';
-
-        var bodyDiv = document.createElement('div');
-        bodyDiv.className = 'wa-body';
-        bodyDiv.style.display = 'none';
-        bodyDiv.innerHTML = bubble;
-
-        tryExtensions(imgEl, reviewUrl(fname), ['jpg','png','jpeg'], function() {
-          // All extensions failed - show text bubble
-          imgEl.style.display = 'none';
-          bodyDiv.style.display = 'block';
+        var img = document.createElement('img');
+        img.alt = m.label;
+        img.loading = 'lazy';
+        tryExtensions(img, mealUrl(m.file), ['jpg', 'png', 'jpeg'], function() {
+          slide.style.background = '#1a1a1a';
+          slide.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:#444;font-size:0.85rem;letter-spacing:1px;">' + m.label + '</div>';
         });
 
-        card.appendChild(imgEl);
-        card.appendChild(bodyDiv);
-      } else {
-        var bodyDiv2 = document.createElement('div');
-        bodyDiv2.className = 'wa-body';
-        bodyDiv2.innerHTML = bubble;
-        card.appendChild(bodyDiv2);
+        var overlay = document.createElement('div');
+        overlay.className = 'slide-overlay';
+        overlay.innerHTML = '<div class="slide-label">' + m.label + ' &mdash; ' + m.file + '</div>';
+
+        slide.appendChild(img);
+        slide.appendChild(overlay);
+        track.appendChild(slide);
+      });
+
+      var pages = Math.ceil(MEAL_IMAGES.length / perView);
+      dots.innerHTML = '';
+      for (var i = 0; i < pages; i++) {
+        (function(idx) {
+          var dot = document.createElement('div');
+          dot.className = 'carousel-dot' + (idx === 0 ? ' active' : '');
+          dot.onclick = function() { goMeal(idx); };
+          dots.appendChild(dot);
+        })(i);
+      }
+    }
+
+    function moveCarousel(dir) {
+      var perView = getMealPerView();
+      var pages = Math.ceil(MEAL_IMAGES.length / perView);
+      mealIdx = (mealIdx + dir + pages) % pages;
+      applyMealPosition();
+    }
+
+    function goMeal(i) { mealIdx = i;
+      applyMealPosition(); }
+
+    function applyMealPosition() {
+      var perView = getMealPerView();
+      var slides = document.querySelectorAll('.carousel-slide');
+      if (!slides.length) return;
+      var slideW = slides[0].offsetWidth + 12;
+      document.getElementById('mealTrack').style.transform = 'translateX(-' + (mealIdx * perView * slideW) + 'px)';
+      document.querySelectorAll('.carousel-dot').forEach(function(d, i) { d.classList.toggle('active', i === mealIdx); });
+    }
+
+    // ===== FEEDBACK CAROUSEL =====
+    var fbIdx = 0;
+
+    function getFbPerView() {
+      return window.innerWidth <= 600 ? 1 : window.innerWidth <= 900 ? 2 : 3;
+    }
+
+    function buildFeedbackCarousel() {
+      var track = document.getElementById('feedbackTrack');
+      var dots = document.getElementById('feedbackDots');
+
+      var cols = [];
+      for (var i = 0; i < TEXT_REVIEWS.length; i += 2) {
+        var col = [TEXT_REVIEWS[i]];
+        if (TEXT_REVIEWS[i + 1]) col.push(TEXT_REVIEWS[i + 1]);
+        cols.push(col);
       }
 
-      slide.appendChild(card);
-    });
+      track.innerHTML = '';
+      cols.forEach(function(col, ci) {
+        var slide = document.createElement('div');
+        slide.className = 'feedback-slide';
 
-    track.appendChild(slide);
-  });
+        col.forEach(function(r, ri) {
+          var imgIdx = ci * 2 + ri;
+          var fname = FEEDBACK_FILES[imgIdx];
+          var stars = '';
+          for (var s = 0; s < r.stars; s++) stars += '<span class="wa-star">&#9733;</span>';
 
-  // Dots
-  var perView = getFbPerView();
-  var pages = Math.ceil(cols.length / perView);
-  dots.innerHTML = '';
-  for (var i = 0; i < pages; i++) {
-    (function(idx){
-      var dot = document.createElement('div');
-      dot.className = 'feedback-dot' + (idx===0?' active':'');
-      dot.onclick = function(){ goFeedback(idx); };
-      dots.appendChild(dot);
-    })(i);
-  }
-}
+          var card = document.createElement('div');
+          card.className = 'wa-screenshot';
 
-function moveFeedback(dir) {
-  var cols  = Math.ceil(TEXT_REVIEWS.length / 2);
-  var pages = Math.ceil(cols / getFbPerView());
-  fbIdx = (fbIdx + dir + pages) % pages;
-  applyFeedbackPosition();
-}
-function goFeedback(i) { fbIdx = i; applyFeedbackPosition(); }
-function applyFeedbackPosition() {
-  var slide = document.querySelector('.feedback-slide');
-  if (!slide) return;
-  var slideW = slide.offsetWidth + 16;
-  document.getElementById('feedbackTrack').style.transform = 'translateX(-' + (fbIdx * getFbPerView() * slideW) + 'px)';
-  document.querySelectorAll('.feedback-dot').forEach(function(d,i){ d.classList.toggle('active', i===fbIdx); });
-}
+          var header = '<div class="wa-header">' +
+            '<div class="wa-avatar">' + r.initials + '</div>' +
+            '<div class="wa-contact">' +
+            '<div class="wa-contact-name">' + r.name + '</div>' +
+            '<div class="wa-contact-status">' + r.plan + '</div>' +
+            '</div>' +
+            '<div class="wa-icon">&#128172;</div>' +
+            '</div>';
 
-// ===== PLANS =====
-var macroData = {
-  'Signature 80': {protein:'~80g',carbs:'~35g',fat:'~12g',pBar:78,cBar:45,fBar:22,tags:['120g Chicken','1 Egg','Plant Protein'],badge:'80G'},
-  'Essential 40': {protein:'~40g',carbs:'~40g',fat:'~10g',pBar:42,cBar:48,fBar:18,tags:['120g Chicken','1 Egg','Fibre Side'],badge:'40G'},
-  'Smart 40':     {protein:'~40g',carbs:'~50g',fat:'~8g', pBar:42,cBar:58,fBar:14,tags:['Plant Protein','Fibre Side','100% Veg'],badge:'40G'},
-  'Smart 80':     {protein:'~80g',carbs:'~45g',fat:'~14g',pBar:78,cBar:52,fBar:20,tags:['70g Soya','120g Paneer/Tofu','100g Channa/Rajma'],badge:'80G'},
-  'Budget 80': {protein:'~80g',carbs:'~40g',fat:'~14g',pBar:78,cBar:48,fBar:20,tags:['Chicken/Tofu','2 Eggs','Soya+Channa'],badge:'80G'},
-};
-var plans = {
-  weekly:[
-    {name:'Signature 80',g:'80',type:'Non-Veg',price:'&#8377;1,600',meals:'5 meals',items:['120g cooked chicken','1 boiled egg','Plant protein (channa/rajma/soya/paneer/tofu)','~80g protein per meal'],featured:true},
-    {name:'Essential 40',g:'40',type:'Non-Veg',price:'&#8377;1,350',meals:'5 meals',items:['120g cooked chicken','1 boiled egg','High-fibre side','~40g protein per meal'],featured:false},
-    {name:'Smart 40',g:'40',type:'Veg',price:'&#8377;1,100',meals:'5 meals',items:['120g plant protein (channa/rajma/soya/paneer/tofu)','High-fibre side','100% vegetarian','~40g protein per meal'],featured:false},
-    {name:'Smart 80',g:'80',type:'Veg',price:'&#8377;1,350',meals:'5 meals',items:['70g soya + 120g paneer/tofu','100g channa/rajma','100% vegetarian','~80g protein per meal'],featured:false}
-  ],
-  monthly:[
-    {name:'Signature 80',g:'80',type:'Non-Veg',price:'&#8377;6,000',meals:'20 meals',items:['120g cooked chicken','1 boiled egg','Plant protein (channa/rajma/soya/paneer/tofu)','~80g protein per meal'],featured:true},
-    {name:'Essential 40',g:'40',type:'Non-Veg',price:'&#8377;5,000',meals:'20 meals',items:['120g cooked chicken','1 boiled egg','High-fibre side','~40g protein per meal'],featured:false},
-    {name:'Smart 40',g:'40',type:'Veg',price:'&#8377;4,000',meals:'20 meals',items:['120g plant protein (channa/rajma/soya/paneer/tofu)','High-fibre side','100% vegetarian','~40g protein per meal'],featured:false},
-    {name:'Smart 80',g:'80',type:'Veg',price:'&#8377;5,500',meals:'20 meals',items:['70g soya + 120g paneer/tofu','100g channa/rajma','100% vegetarian','~80g protein per meal'],featured:false},
-    {name:'Budget 80',g:'80',type:'Non-Veg',price:'&#8377;3,800',meals:'20 meals',items:['100g Chicken/Tofu/Paneer','2 boiled egg', '80gm Soya','100gm channa/rajma','~80g protein per meal'],featured:false}
-  ]
-};
-var selectedPlan = 'Signature 80';
+          var bubble = '<div class="wa-bubble">' +
+            '<div class="wa-text">' + r.text + '</div>' +
+            '<div class="wa-rating">' + stars + '</div>' +
+            '<div class="wa-time"><span>' + r.time + '</span><span class="wa-check">&#10003;&#10003;</span></div>' +
+            '</div>';
 
-function updateMacroCard(n) {
-  var m = macroData[n]; if (!m) return;
-  document.getElementById('macroTitle').textContent = n + ' Macros';
-  document.getElementById('barProtein').style.width = m.pBar + '%';
-  document.getElementById('barCarbs').style.width   = m.cBar + '%';
-  document.getElementById('barFat').style.width     = m.fBar + '%';
-  document.getElementById('valProtein').textContent = m.protein;
-  document.getElementById('valCarbs').textContent   = m.carbs;
-  document.getElementById('valFat').textContent     = m.fat;
-  document.getElementById('heroBadgeNum').textContent = m.badge;
-  document.getElementById('macroTags').innerHTML = m.tags.map(function(t){
-    return '<span class="macro-tag">' + t + '</span>';
-  }).join('');
-}
+          card.innerHTML = header;
 
-function selectPlan(name) {
-  selectedPlan = name;
-  updateMacroCard(name);
-  document.querySelectorAll('.plan-card').forEach(function(c) {
-    var isSel = c.dataset.plan === name;
-    c.classList.toggle('selected', isSel);
-    var hint = c.querySelector('.select-hint');
-    if (hint) hint.textContent = isSel ? 'Selected - tap Order above' : 'Tap to select this plan';
-  });
-}
+          if (fname) {
+            var imgEl = document.createElement('img');
+            imgEl.alt = 'Customer review';
+            imgEl.style.cssText = 'width:100%;display:block;max-height:280px;object-fit:cover;';
 
-function renderPlans(type) {
-  var grid = document.getElementById('plansGrid');
-  if (!grid) return;
-  grid.innerHTML = plans[type].map(function(p) {
-    var msg  = encodeURIComponent('Hi ProPackD! I want to order the ' + p.name + ' (' + type + ') plan.');
-    var sel  = selectedPlan === p.name;
-    var items = p.items.map(function(i){ return '<li>' + i + '</li>'; }).join('');
-    var nameHtml = p.name.split(/([0-9]+)/).map(function(part){
-      return /^[0-9]+$/.test(part) ? '<span class="g">'+part+'</span>' : part;
-    }).join('');
-    return '<div class="plan-card' + (p.featured?' featured':'') + (sel?' selected':'') +
-      '" data-plan="' + p.name + '" onclick="selectPlan(this.dataset.plan)">' +
-      (p.featured ? '<div class="plan-badge">Most Popular</div>' : '') +
-      '<div class="selected-badge">&#10003; Selected</div>' +
-      '<div class="plan-type">' + p.type + '</div>' +
-      '<div class="plan-name">' + nameHtml + '</div>' +
-      '<div class="plan-protein">~' + p.g + 'g Protein per meal</div>' +
-      '<ul class="plan-items">' + items + '</ul>' +
-      '<div class="plan-price"><div class="price-num">' + p.price + '</div><div class="price-meals"> / ' + p.meals + '</div></div>' +
-      '<a href="https://wa.me/918248522590?text=' + msg + '" target="_blank" class="plan-cta" onclick="event.stopPropagation()">&#128172; Order on WhatsApp</a>' +
-      '<div class="select-hint">' + (sel ? 'Selected - tap Order above' : 'Tap to select this plan') + '</div>' +
-    '</div>';
-  }).join('');
-}
+            var bodyDiv = document.createElement('div');
+            bodyDiv.className = 'wa-body';
+            bodyDiv.style.display = 'none';
+            bodyDiv.innerHTML = bubble;
 
-function switchPlan(type, btn) {
-  document.querySelectorAll('.toggle-btn').forEach(function(b){ b.classList.remove('active'); });
-  btn.classList.add('active');
-  renderPlans(type);
-}
+            tryExtensions(imgEl, reviewUrl(fname), ['jpg', 'png', 'jpeg'], function() {
+              imgEl.style.display = 'none';
+              bodyDiv.style.display = 'block';
+            });
 
-function toggleFaq(el) { el.closest('.faq-item').classList.toggle('open'); }
+            card.appendChild(imgEl);
+            card.appendChild(bodyDiv);
+          } else {
+            var bodyDiv2 = document.createElement('div');
+            bodyDiv2.className = 'wa-body';
+            bodyDiv2.innerHTML = bubble;
+            card.appendChild(bodyDiv2);
+          }
 
-// INIT
-renderPlans('weekly');
-updateMacroCard('Signature 80');
-buildMealCarousel();
-buildFeedbackCarousel();
+          slide.appendChild(card);
+        });
 
-window.addEventListener('resize', function() { applyMealPosition(); applyFeedbackPosition(); });
+        track.appendChild(slide);
+      });
 
-var observer = new IntersectionObserver(function(entries) {
-  entries.forEach(function(e){ if (e.isIntersecting) e.target.classList.add('visible'); });
-}, {threshold: 0.1});
-document.querySelectorAll('.fade-in').forEach(function(el){ observer.observe(el); });
-</script>
+      var perView = getFbPerView();
+      var pages = Math.ceil(cols.length / perView);
+      dots.innerHTML = '';
+      for (var i = 0; i < pages; i++) {
+        (function(idx) {
+          var dot = document.createElement('div');
+          dot.className = 'feedback-dot' + (idx === 0 ? ' active' : '');
+          dot.onclick = function() { goFeedback(idx); };
+          dots.appendChild(dot);
+        })(i);
+      }
+    }
+
+    function moveFeedback(dir) {
+      var cols = Math.ceil(TEXT_REVIEWS.length / 2);
+      var pages = Math.ceil(cols / getFbPerView());
+      fbIdx = (fbIdx + dir + pages) % pages;
+      applyFeedbackPosition();
+    }
+
+    function goFeedback(i) { fbIdx = i;
+      applyFeedbackPosition(); }
+
+    function applyFeedbackPosition() {
+      var slide = document.querySelector('.feedback-slide');
+      if (!slide) return;
+      var slideW = slide.offsetWidth + 16;
+      document.getElementById('feedbackTrack').style.transform = 'translateX(-' + (fbIdx * getFbPerView() * slideW) + 'px)';
+      document.querySelectorAll('.feedback-dot').forEach(function(d, i) { d.classList.toggle('active', i === fbIdx); });
+    }
+
+    // ===== PLANS =====
+    var macroData = {
+      'Signature 80': { protein: '~80g', carbs: '~35g', fat: '~12g', pBar: 78, cBar: 45, fBar: 22, tags: ['120g Chicken', '1 Egg',
+          'Plant Protein'
+        ], badge: '80G' },
+      'Essential 40': { protein: '~40g', carbs: '~40g', fat: '~10g', pBar: 42, cBar: 48, fBar: 18, tags: ['120g Chicken', '1 Egg',
+          'Fibre Side'
+        ], badge: '40G' },
+      'Smart 40': { protein: '~40g', carbs: '~50g', fat: '~8g', pBar: 42, cBar: 58, fBar: 14, tags: ['Plant Protein',
+          'Fibre Side', '100% Veg'
+        ], badge: '40G' },
+      'Smart 80': { protein: '~80g', carbs: '~45g', fat: '~14g', pBar: 78, cBar: 52, fBar: 20, tags: ['70g Soya',
+          '120g Paneer/Tofu', '100g Channa/Rajma'
+        ], badge: '80G' },
+      'Budget 80': { protein: '~80g', carbs: '~40g', fat: '~14g', pBar: 78, cBar: 48, fBar: 20, tags: ['Chicken/Tofu',
+          '2 Eggs', 'Soya+Channa'
+        ], badge: '80G' },
+    };
+    var plans = {
+      weekly: [
+        { name: 'Signature 80', g: '80', type: 'Non-Veg', price: '&#8377;1,600', meals: '5 meals', items: ['120g cooked chicken',
+            '1 boiled egg', 'Plant protein (channa/rajma/soya/paneer/tofu)', '~80g protein per meal'
+          ], featured: true },
+        { name: 'Essential 40', g: '40', type: 'Non-Veg', price: '&#8377;1,350', meals: '5 meals', items: ['120g cooked chicken',
+            '1 boiled egg', 'High-fibre side', '~40g protein per meal'
+          ], featured: false },
+        { name: 'Smart 40', g: '40', type: 'Veg', price: '&#8377;1,100', meals: '5 meals', items: [
+            '120g plant protein (channa/rajma/soya/paneer/tofu)', 'High-fibre side', '100% vegetarian',
+            '~40g protein per meal'
+          ], featured: false },
+        { name: 'Smart 80', g: '80', type: 'Veg', price: '&#8377;1,350', meals: '5 meals', items: ['70g soya + 120g paneer/tofu',
+            '100g channa/rajma', '100% vegetarian', '~80g protein per meal'
+          ], featured: false }
+      ],
+      monthly: [
+        { name: 'Signature 80', g: '80', type: 'Non-Veg', price: '&#8377;6,000', meals: '20 meals', items: ['120g cooked chicken',
+            '1 boiled egg', 'Plant protein (channa/rajma/soya/paneer/tofu)', '~80g protein per meal'
+          ], featured: true },
+        { name: 'Essential 40', g: '40', type: 'Non-Veg', price: '&#8377;5,000', meals: '20 meals', items: ['120g cooked chicken',
+            '1 boiled egg', 'High-fibre side', '~40g protein per meal'
+          ], featured: false },
+        { name: 'Smart 40', g: '40', type: 'Veg', price: '&#8377;4,000', meals: '20 meals', items: [
+            '120g plant protein (channa/rajma/soya/paneer/tofu)', 'High-fibre side', '100% vegetarian',
+            '~40g protein per meal'
+          ], featured: false },
+        { name: 'Smart 80', g: '80', type: 'Veg', price: '&#8377;5,500', meals: '20 meals', items: ['70g soya + 120g paneer/tofu',
+            '100g channa/rajma', '100% vegetarian', '~80g protein per meal'
+          ], featured: false },
+        { name: 'Budget 80', g: '80', type: 'Non-Veg', price: '&#8377;3,800', meals: '20 meals', items: ['100g Chicken/Tofu/Paneer',
+            '2 boiled egg', '80gm Soya', '100gm channa/rajma', '~80g protein per meal'
+          ], featured: false }
+      ]
+    };
+    var selectedPlan = 'Signature 80';
+
+    function updateMacroCard(n) {
+      var m = macroData[n];
+      if (!m) return;
+      document.getElementById('macroTitle').textContent = n + ' Macros';
+      document.getElementById('barProtein').style.width = m.pBar + '%';
+      document.getElementById('barCarbs').style.width = m.cBar + '%';
+      document.getElementById('barFat').style.width = m.fBar + '%';
+      document.getElementById('valProtein').textContent = m.protein;
+      document.getElementById('valCarbs').textContent = m.carbs;
+      document.getElementById('valFat').textContent = m.fat;
+      document.getElementById('heroBadgeNum').textContent = m.badge;
+      document.getElementById('macroTags').innerHTML = m.tags.map(function(t) {
+        return '<span class="macro-tag">' + t + '</span>';
+      }).join('');
+    }
+
+    function selectPlan(name) {
+      selectedPlan = name;
+      updateMacroCard(name);
+      document.querySelectorAll('.plan-card').forEach(function(c) {
+        var isSel = c.dataset.plan === name;
+        c.classList.toggle('selected', isSel);
+        var hint = c.querySelector('.select-hint');
+        if (hint) hint.textContent = isSel ? 'Selected - tap Order above' : 'Tap to select this plan';
+      });
+    }
+
+    function renderPlans(type) {
+      var grid = document.getElementById('plansGrid');
+      if (!grid) return;
+      grid.innerHTML = plans[type].map(function(p) {
+        var msg = encodeURIComponent('Hi ProPackD! I want to order the ' + p.name + ' (' + type + ') plan.');
+        var sel = selectedPlan === p.name;
+        var items = p.items.map(function(i) { return '<li>' + i + '</li>'; }).join('');
+        var nameHtml = p.name.split(/([0-9]+)/).map(function(part) {
+          return /^[0-9]+$/.test(part) ? '<span class="g">' + part + '</span>' : part;
+        }).join('');
+        return '<div class="plan-card' + (p.featured ? ' featured' : '') + (sel ? ' selected' : '') +
+          '" data-plan="' + p.name + '" onclick="selectPlan(this.dataset.plan)">' +
+          (p.featured ? '<div class="plan-badge">Most Popular</div>' : '') +
+          '<div class="selected-badge">&#10003; Selected</div>' +
+          '<div class="plan-type">' + p.type + '</div>' +
+          '<div class="plan-name">' + nameHtml + '</div>' +
+          '<div class="plan-protein">~' + p.g + 'g Protein per meal</div>' +
+          '<ul class="plan-items">' + items + '</ul>' +
+          '<div class="plan-price"><div class="price-num">' + p.price + '</div><div class="price-meals"> / ' + p.meals +
+          '</div></div>' +
+          '<a href="https://wa.me/918248522590?text=' + msg + '" target="_blank" class="plan-cta" onclick="event.stopPropagation()">&#128172; Order on WhatsApp</a>' +
+          '<div class="select-hint">' + (sel ? 'Selected - tap Order above' : 'Tap to select this plan') + '</div>' +
+          '</div>';
+      }).join('');
+    }
+
+    function switchPlan(type, btn) {
+      document.querySelectorAll('.toggle-btn').forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      renderPlans(type);
+    }
+
+    function toggleFaq(el) { el.closest('.faq-item').classList.toggle('open'); }
+
+    // INIT
+    renderPlans('weekly');
+    updateMacroCard('Signature 80');
+    buildMealCarousel();
+    buildFeedbackCarousel();
+
+    window.addEventListener('resize', function() { applyMealPosition();
+      applyFeedbackPosition(); });
+
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(function(el) { observer.observe(el); });
+  </script>
 </body>
 </html>
